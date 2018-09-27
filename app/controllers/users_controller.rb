@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     # users can only see their own profile, and no one else's
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id]) unless !@user
     if logged_in? && current_user == @user
       erb :'users/show'
     else
@@ -30,7 +30,9 @@ class UsersController < ApplicationController
 
   patch '/users/:id' do
     # users can update their own information
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
+    @user.update(username: params[:user][:username]) unless params[:user][:username].blank?
+    @user.update(email: params[:user][:email]) unless params[:user][:email].blank?
   end
 
   post '/users/new' do
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
 
   delete '/users/:id' do
     # users can delete their own account, and no one else's
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
   end
 
   def logged_in?
