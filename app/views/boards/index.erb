@@ -1,4 +1,4 @@
 <h2>Message Boards</h2>
-<% @boards.each.uniq do |board| %>
+<% @boards.each do |board| %>
   <a href="/boards/<%= board.id %>"><img alt="<%= board.topic %>"></a>
 <% end %>
