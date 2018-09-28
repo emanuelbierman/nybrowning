@@ -1,6 +1,4 @@
 <!-- This is the main display page after the landing page. -->
-<h1><%= @board.topic %></h1>
-
 <% if logged_in? %>
   <form method="post" action="/posts">
     <input type="text" name="post[content]" placeholder="Post content here">
@@ -8,9 +6,22 @@
     <input type="submit" value="Submit">
   </form>
 <% else %>
-  <p>If you'd like to leave a comment on this board, please log in or sign up</p>
+  <p>If you'd like to leave a comment on this board, please sign up or log in</p>
 <% end %>
 
-
-<p>Either way, then it shows an index of all the posts of that board</p>
-  <p>If logged in and if it's the current_user's post, it shows an 'edit' link next to each of your posts</p>
+<section>
+  <h1><%= @board.topic %></h1>
+  <% @board.posts.each do |post| %>
+    <%= post.content %><br>
+    by: <%= post.user.username %> at: <%= post.created_at %>
+    <% if logged_in? %>
+      <form method="post" action="/posts">
+        <input type="text" name="post[content]" placeholder="<%= post.content %>">
+        <input type="hidden" name="board[id]" value="<%= @board.id %>">
+        <input type="hidden" name="_method" value="patch">
+        <input type="submit" value="Edit">
+      </form>
+    <% end %>
+    <br></br>
+  <% end %>
+</section>

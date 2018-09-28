@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   patch '/posts/:id' do
     # users can edit the content of their own posts
-    @post = Post.find_by(params[:id])
+    @post = Post.find_by(id: params[:id])
     @post.update(content: params[:post][:content]) unless params[:post][:content].blank?
   end
 end

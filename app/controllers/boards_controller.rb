@@ -12,7 +12,7 @@ class BoardsController < ApplicationController
 
   get '/boards/:id' do
     # anyone can see all posts in a board
-    @board = Board.find_by(params[:id])
+    @board = Board.find_by(id: params[:id])
     erb :'boards/show'
   end
 
