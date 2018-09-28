@@ -1,2 +1,4 @@
-<p>This page is the internal landing page, for all redirects</p>
-<p>This page displays an index of all board topics<p>
+<h2>Message Boards</h2>
+<% @boards.each.do |board| %>
+  <a href=""><img src="" alt="<%= board.topic %></a>"></a>
+<% end %>
