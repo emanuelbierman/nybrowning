@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     # else
     #   flash[:message] = "Your post was not submitted."
     end
-    redirect to "/boards/<%= @board.id %>"
+    redirect to "/boards/#{@board.id}"
   end
 
   post '/posts/:id' do
