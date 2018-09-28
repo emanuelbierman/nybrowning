@@ -1,11 +1,15 @@
-<h1><%= @board.title %></h1>
-<p>This is the main display page after the landing page.</p>
+<!-- This is the main display page after the landing page. -->
+<h1><%= @board.topic %></h1>
 
-<p>If logged in, it shows a link to create a post</p>
-<p>make sure to set the current value of @board to the value tag in a submit tag in the create form, so it can be associated with that board</p>
-
-<p>If not logged in, </p>
+<% if logged_in? %>
+  <form method="post" action="/posts">
+    <input type="text" name="post[content]" placeholder="Post content here">
+    <input type="hidden" name="board[id]" value="<%= @board.id %>">
+    <input type="submit" value="Submit">
+  </form>
+<% else %>
   <p>If you'd like to leave a comment on this board, please log in or sign up</p>
+<% end %>
 
 
 <p>Either way, then it shows an index of all the posts of that board</p>

@@ -5,12 +5,11 @@ class PostsController < ApplicationController
   # posts don't need their own views because they're only viewable in the context of the message board
 
   post '/posts' do
-    # users can create a new post if they've already signed up and logged in
-    if logged_in? && current_user
-    # do I need both of these conditions?
-      @post = Post.create(params[:post])
+    # this @board needs to be passed whether or not the user is logged in
+    @board = Board.find_by(id: params[:board][:id])
+    if logged_in?
+      @post = Post.create(content: params[:post][:content])
       @user = current_user
-      @board = Board.find_by(params[:board])
       @post.user = @user
       @user.posts << @post
       @post.board = @board
@@ -19,7 +18,7 @@ class PostsController < ApplicationController
     # else
     #   flash[:message] = "Your post was not submitted."
     end
-    redirect to '/boards'
+    redirect to "/boards/<%= @board.id %>"
   end
 
   patch '/posts/:id' do
