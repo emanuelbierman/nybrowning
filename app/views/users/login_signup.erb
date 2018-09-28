@@ -1,1 +1,13 @@
-<p>This page has both sign-up and log-in forms.</p>
+<form method="post" action="/signup">
+  <label>If you don't have an account:</label>
+  <input type="text" name="user[username]" placeholder="Username">
+  <input type="text" name="user[email]" placeholder="Email">
+  <input type="text" name="user[password]" placeholder="Password">
+  <input type="submit" value="Sign Up">
+</form>
+<form method="post" action="/login">
+  <label>If you already have an account:</label>
+  <input type="text" name="user[username]" placeholder="Username">
+  <input type="text" name="user[password]" placeholder="Password">
+  <input type="submit" value="Log In">
+</form>

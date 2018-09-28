@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     redirect to "/boards/<%= @board.id %>"
   end
 
-  patch '/posts/:id' do
+  post '/posts/:id' do
     # users can edit the content of their own posts
     @post = Post.find_by(id: params[:id])
     @post.update(content: params[:post][:content]) unless params[:post][:content].blank?

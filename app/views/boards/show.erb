@@ -14,8 +14,8 @@
   <% @board.posts.each do |post| %>
     <%= post.content %><br>
     by: <%= post.user.username %> at: <%= post.created_at %>
-    <% if logged_in? %>
-      <form method="post" action="/posts">
+    <% if logged_in? && post.user == current_user %>
+      <form method="post" action="/posts/<%= post.id %>">
         <input type="text" name="post[content]" placeholder="<%= post.content %>">
         <input type="hidden" name="board[id]" value="<%= @board.id %>">
         <input type="hidden" name="_method" value="patch">

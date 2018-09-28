@@ -9,9 +9,9 @@
   <nav>
     <a href="/boards">Message Boards</a>
     <% if logged_in? %>
-      <a href="/users/logout">Log Out</a>
+      <a href="/logout">Log Out</a>
     <% else %>
-      <a href="/users/login">Sign Up or Log in</a>
+      <a href="/login">Sign Up/Log in</a>
     <% end %>
   </nav>
   <%= yield %>
