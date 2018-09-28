@@ -6,9 +6,9 @@ class BoardsController < ApplicationController
     erb :'boards/index'
   end
 
-  get '/boards/new' do
-    # users can't create new boards, or can they?
-  end
+  # get '/boards/new' do
+  #   users can't create new boards, or can they?
+  # end
 
   get '/boards/:id' do
     # anyone can see all posts in a board
@@ -16,7 +16,7 @@ class BoardsController < ApplicationController
     erb :'boards/show'
   end
 
-  get '/boards/edit' do
-    # users can't edit boards, or can they?
-  end
+  # get '/boards/edit' do
+  #   users can't edit boards, or can they?
+  # end
 end
