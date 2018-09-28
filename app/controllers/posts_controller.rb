@@ -1,4 +1,8 @@
+# require 'rack-flash'
+
 class PostsController < ApplicationController
+
+  # posts don't need their own views because they're only viewable in the context of the message board
 
   post '/posts' do
     # users can create a new post if they've already signed up and logged in
@@ -11,9 +15,9 @@ class PostsController < ApplicationController
       @user.posts << @post
       @post.board = @board
       @board.posts << @post
-      flash[:message] = "Your post was submitted."
-    else
-      flash[:message] = "Your post was not submitted."
+    #   flash[:message] = "Your post was submitted."
+    # else
+    #   flash[:message] = "Your post was not submitted."
     end
     redirect to '/boards'
   end
