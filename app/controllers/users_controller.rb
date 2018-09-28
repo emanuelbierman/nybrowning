@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  get '/users' do
-    # users can't see all users
-  end
+  # get '/users' do
+  #   users can't see all users
+  # end
 
   get '/users/login' do
     # users can log in or go to the board index
@@ -13,8 +13,14 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/users/logout' do
+    session.destroy
+    redirect to '/boards'
+  end
+
   get '/users/new' do
     # users can sign up
+    # user.create and user.authenticate
     redirect to '/users/login'
   end
 

@@ -1,7 +1,12 @@
 <h2>Welcome</h2>
-<p>This is the external landing page.</p>
-<p>This page has information about the NY Robert Browning Society,</p>
+<a href="/boards">Message Boards</a>
 
-<p>and a link to board index,</p>
+<% if logged_in? %>
+  <a href="/users/logout">Log Out</a>
+<% else %>
+  <a href="/users/login">Sign Up or Log in</a>
+<% end %>
 
-<p>and, if logged in, a link to log out</p>
+<div>
+<p>This page has information about the NY Robert Browning Society.</p>
+</div>
