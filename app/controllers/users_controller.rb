@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   post '/signup' do
     # after a user signs up, they go to the boards index
     # @user = User.find_or_create_by(username: params[:user][:username])
+    # if params[:user][:username].blank? || params[:user][:email] || params[:user][:password]
     user = User.where(username: params[:user][:username]).first_or_create do |user|
       user.email = params[:user][:email]
       user.password = params[:user][:password]
@@ -51,11 +52,8 @@ class UsersController < ApplicationController
     redirect to "/users/#{@user.id}"
   end
 
-  delete '/users/:id' do
-    # users can delete their own account, and no one else's
-    @user = User.find_by(id: params[:id])
-    @user.destroy
-    redirect to '/'
-  end
+  # delete '/users/:id' do
+  #   users can't delete their own account
+  # end
 
 end
