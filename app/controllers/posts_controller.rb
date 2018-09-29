@@ -23,7 +23,16 @@ class PostsController < ApplicationController
 
   post '/posts/:id' do
     # users can edit the content of their own posts
-    @post = Post.find_by(id: params[:id])
-    @post.update(content: params[:post][:content]) unless params[:post][:content].blank?
+    post = Post.find_by(id: params[:id])
+    post.update(content: params[:post][:content]) unless params[:post][:content].blank?
+    @user = User.find_by(id: params[:user][:id])
+    redirect to "/users/#{@user.id}"
+  end
+
+  delete 'posts/:id' do
+    post = Post.find_by(id: params[:id])
+    post.destroy
+    @user = User.find_by(id: params[:user][:id])
+    redirect to "/users/#{@user.id}"
   end
 end

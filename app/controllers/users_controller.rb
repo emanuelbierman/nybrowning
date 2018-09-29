@@ -48,11 +48,14 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @user.update(username: params[:user][:username]) unless params[:user][:username].blank?
     @user.update(email: params[:user][:email]) unless params[:user][:email].blank?
+    redirect to "/users/#{@user.id}"
   end
 
   delete '/users/:id' do
     # users can delete their own account, and no one else's
     @user = User.find_by(id: params[:id])
+    @user.destroy
+    redirect to '/'
   end
 
 end
