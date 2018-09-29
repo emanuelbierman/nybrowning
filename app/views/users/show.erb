@@ -7,18 +7,23 @@
 
 <section>
   <h3>Your posts:</h3>
-  <% @user.posts.each do |post| %>
-    <%= post.content %><br>
-    by: <%= post.user.username %> at: <%= post.created_at %>
-    <form method="post" action="/posts/<%= post.id %>">
-      <input type="text" name="post[content]" placeholder="<%= post.content %>">
-      <input type="hidden" name="_method" value="patch">
-      <input type="submit" value="Edit">
-    </form>
-    <form method="post" action="/posts/<%= post.id %>">
-      <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="Delete">
-    </form>
-    <br></br>
+  <% if @user.posts.empty? %>
+  <p>It looks like you haven't posted any content yet.</p>
+  <p>You can change that by visiting a <a href="/boards">message board.</a></p>
+  <% else %>
+    <% @user.posts.each do |post| %>
+      <%= post.content %><br>
+      by: <%= post.user.username %> at: <%= post.created_at %>
+      <form method="post" action="/posts/<%= post.id %>">
+        <input type="text" name="post[content]" placeholder="<%= post.content %>">
+        <input type="hidden" name="_method" value="patch">
+        <input type="submit" value="Edit">
+      </form>
+      <form method="post" action="/posts/<%= post.id %>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+      </form>
+      <br></br>
+    <% end %>
   <% end %>
 </section>
