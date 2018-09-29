@@ -35,8 +35,8 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     # users can only see their own profile, and no one else's
-    @user = User.find_by(id: params[:id]) unless !@user
-    if logged_in? && current_user == @user
+    @user = User.find_by(id: params[:id])
+    if logged_in? && current_user.id == @user.id
       erb :'users/show'
     else
       redirect to '/boards'

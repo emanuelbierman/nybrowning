@@ -21,18 +21,18 @@ class PostsController < ApplicationController
     redirect to "/boards/#{@board.id}"
   end
 
-  post '/posts/:id' do
+  patch '/posts/:id' do
     # users can edit the content of their own posts
-    post = Post.find_by(id: params[:id])
-    post.update(content: params[:post][:content]) unless params[:post][:content].blank?
-    @user = User.find_by(id: params[:user][:id])
-    redirect to "/users/#{@user.id}"
+    @post = Post.find_by(id: params[:id])
+    @post.update(content: params[:post][:content]) unless params[:post][:content].blank?
+    redirect to "/users/#{@post.user.id}"
   end
 
-  delete 'posts/:id' do
-    post = Post.find_by(id: params[:id])
-    post.destroy
-    @user = User.find_by(id: params[:user][:id])
-    redirect to "/users/#{@user.id}"
+  delete '/posts/:id' do
+    @post = Post.find_by(id: params[:id])
+    # we need to find the user before we destroy their post
+    user_id = @post.user.id
+    @post.destroy
+    redirect to "/users/#{user_id}"
   end
 end

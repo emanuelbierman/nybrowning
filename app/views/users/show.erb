@@ -1,7 +1,6 @@
 <!-- This is the user display page -->
 <h3>Welcome, <%= @user.username %></h3>
 <form method="post" action="/users">
-  <input type="hidden" name="board[id]" value="<%= @board.id %>">
   <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete">
 </form>
@@ -13,14 +12,10 @@
     by: <%= post.user.username %> at: <%= post.created_at %>
     <form method="post" action="/posts/<%= post.id %>">
       <input type="text" name="post[content]" placeholder="<%= post.content %>">
-      <input type="hidden" name="board[id]" value="<%= post.board.id %>">
-      <input type="hidden" name="user[id]" value="<%= @user.id %>">
       <input type="hidden" name="_method" value="patch">
       <input type="submit" value="Edit">
     </form>
     <form method="post" action="/posts/<%= post.id %>">
-      <input type="hidden" name="board[id]" value="<%= post.board.id %>">
-      <input type="hidden" name="user[id]" value="<%= @user.id %>">
       <input type="hidden" name="_method" value="delete">
       <input type="submit" value="Delete">
     </form>
