@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   get '/logout' do
     session.destroy
-    redirect to '/boards'
+    redirect to '/'
   end
 
   post '/signup' do
