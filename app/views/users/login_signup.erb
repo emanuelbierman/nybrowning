@@ -1,3 +1,6 @@
+<% if @error_message != nil %>
+  <p><%= @error_message %></p>
+<% end %>
 <form method="post" action="/signup">
   <label>If you don't have an account:</label>
   <input type="text" name="user[username]" placeholder="Username">

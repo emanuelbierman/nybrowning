@@ -1,3 +1,6 @@
+<% if @error_message != nil %>
+  <p><%= @error_message %></p>
+<% end %>
 <h2>Message Boards</h2>
 <% @boards.each do |board| %>
   <a href="/boards/<%= board.id %>"><img alt="<%= board.topic %>"></a>
