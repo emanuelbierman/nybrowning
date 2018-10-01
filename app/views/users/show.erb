@@ -1,6 +1,6 @@
 <!-- This is the user display page -->
-<% if @error_message != nil %>
-  <p><%= @error_message %></p>
+<% if @message != nil %>
+  <p><%= @message %></p>
 <% end %>
 <h3>Welcome, <%= @user.username %></h3>
 <form method="post" action="/users/<%= @user.id %>">

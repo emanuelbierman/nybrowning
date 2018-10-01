@@ -5,8 +5,8 @@
     <input type="hidden" name="board[id]" value="<%= @board.id %>">
     <input type="submit" value="Submit">
   </form>
-<% elsif @error_message != nil %>
-  <p><%= @error_message %></p>
+<% elsif @message != nil %>
+  <p><%= @message %></p>
 <% end %>
 
 <section>

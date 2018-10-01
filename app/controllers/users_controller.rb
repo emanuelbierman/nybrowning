@@ -10,7 +10,8 @@ class UsersController < ApplicationController
 
   get '/logout' do
     session.destroy
-    redirect to '/'
+    @message = "You have been logged out."
+    erb :index
   end
 
   post '/signup' do
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       erb :'boards/show'
     else
-      @error_message = "Please input a username, email and password. All fields are required."
+      @message = "Please input a username, email and password. All fields are required."
       erb :'users/login_signup'
     end
   end
@@ -34,11 +35,11 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         redirect to '/boards'
       else
-        @error_message = "Please try again."
+        @message = "Please try again."
         erb :'users/login_signup'
       end
     else
-      @error_message = "Please input a username, email and password. All fields are required."
+      @message = "Please input a username, email and password. All fields are required."
       erb :'users/login_signup'
     end
   end
@@ -48,10 +49,10 @@ class UsersController < ApplicationController
     if logged_in? && current_user.id == @user.id
       erb :'users/show'
     elsif logged_in?
-      @error_message = "Sorry, you can only view your own account."
+      @message = "Sorry, you can only view your own account."
       erb :'users/login_signup'
     else
-      @error_message = "Please log in to access your account."
+      @message = "Please log in to access your account."
       erb :'users/login_signup'
     end
   end
