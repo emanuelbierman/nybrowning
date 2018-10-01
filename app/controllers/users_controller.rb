@@ -14,11 +14,15 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    user = User.where(username: params[:user][:username]).first_or_create do |user|
-      user.email = params[:user][:email]
-      user.password = params[:user][:password]
+    if params[:user][:username].blank? || params[:user][:email].blank? || params[:user][:password].blank?
+      user = User.where(username: params[:user][:username]).first_or_create do |user|
+        user.email = params[:user][:email]
+        user.password = params[:user][:password]
+      end
+      session[:user_id] = user.id
+    else
+      @error_message = "Please input a username, email and password. All fields are required."
     end
-    session[:user_id] = user.id
     redirect to '/boards'
   end
 
@@ -26,8 +30,11 @@ class UsersController < ApplicationController
     user = User.find_by(:username => params[:user][:username])
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
+      redirect to '/boards'
+    else
+      @error_message = "Please input a username, email and password. All fields are required."
+      erb :'users/login_signup'
     end
-    redirect to '/boards'
   end
 
   get '/users/:id' do

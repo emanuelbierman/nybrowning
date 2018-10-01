@@ -5,6 +5,8 @@
     <input type="hidden" name="board[id]" value="<%= @board.id %>">
     <input type="submit" value="Submit">
   </form>
+<% elsif @error_message != nil %>
+  <%= @error_message %>
 <% else %>
   <p>If you'd like to leave a comment on this board, please sign up or log in</p>
 <% end %>
