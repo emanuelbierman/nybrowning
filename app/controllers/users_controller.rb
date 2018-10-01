@@ -20,17 +20,23 @@ class UsersController < ApplicationController
         user.password = params[:user][:password]
       end
       session[:user_id] = user.id
+      erb :'boards/show'
     else
       @error_message = "Please input a username, email and password. All fields are required."
+      erb :'users/login_signup'
     end
-    redirect to '/boards'
   end
 
   post '/login' do
-    user = User.find_by(:username => params[:user][:username])
-    if user && user.authenticate(params[:user][:password])
-      session[:user_id] = user.id
-      redirect to '/boards'
+    if !params[:user][:username].empty?
+      user = User.find_by(:username => params[:user][:username])
+      if user && user.authenticate(params[:user][:password])
+        session[:user_id] = user.id
+        redirect to '/boards'
+      else
+        @error_message = "Please try again."
+        erb :'users/login_signup'
+      end
     else
       @error_message = "Please input a username, email and password. All fields are required."
       erb :'users/login_signup'
@@ -41,8 +47,12 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     if logged_in? && current_user.id == @user.id
       erb :'users/show'
+    elsif logged_in?
+      @error_message = "Sorry, you can only view your own account."
+      erb :'users/login_signup'
     else
-      redirect to '/boards'
+      @error_message = "Please log in to access your account."
+      erb :'users/login_signup'
     end
   end
 
