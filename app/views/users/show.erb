@@ -13,8 +13,7 @@
 <section>
   <h3>Your posts:</h3>
   <% if @user.posts.empty? %>
-  <p>It looks like you haven't posted any content yet.</p>
-  <p>You can change that by visiting a <a href="/boards">message board.</a></p>
+    <p>It looks like you haven't posted any content yet.</p>
   <% else %>
     <% @user.posts.each do |post| %>
       <%= post.content %><br>
@@ -28,7 +27,6 @@
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete">
       </form>
-      <br></br>
     <% end %>
   <% end %>
 </section>

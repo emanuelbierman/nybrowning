@@ -1,12 +1,13 @@
 <!-- This is the main display page after the landing page. -->
+<% if @message != nil %>
+  <p><%= @message %></p>
+<% end %>
 <% if logged_in? %>
   <form method="post" action="/posts">
     <input type="text" name="post[content]" placeholder="Post content here">
     <input type="hidden" name="board[id]" value="<%= @board.id %>">
     <input type="submit" value="Submit">
   </form>
-<% elsif @message != nil %>
-  <p><%= @message %></p>
 <% end %>
 
 <section>

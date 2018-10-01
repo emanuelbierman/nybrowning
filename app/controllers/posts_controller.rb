@@ -4,15 +4,14 @@ class PostsController < ApplicationController
 
   post '/posts' do
     @board = Board.find_by(id: params[:board][:id])
-    if logged_in?
-      @post = Post.create(content: params[:post][:content])
-      @user = current_user
-      @post.user = @user
-      @user.posts << @post
-      @post.board = @board
-      @board.posts << @post
-    end
-    redirect to "/boards/#{@board.id}"
+    @post = Post.create(content: params[:post][:content])
+    @user = current_user
+    @post.user = @user
+    @user.posts << @post
+    @post.board = @board
+    @board.posts << @post
+    @message = "Your post has been posted!"
+    erb :'boards/show'
   end
 
   patch '/posts/:id' do
