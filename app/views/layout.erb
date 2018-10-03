@@ -9,16 +9,22 @@
     <link rel=”stylesheet” type=”text/css” href=”/css/style.css”>
   </head>
   <body>
-    <h1>The New York Robert Browning Society</h1>
-    <nav>
-      <a href="/boards">Message Boards</a>
-      <% if logged_in? && current_user %>
-        <a href="/users/<%= current_user.id %>">Your Account</a>
-        <a href="/logout">Log Out</a>
-      <% else %>
-        <a href="/login">Sign Up/Log in</a>
-      <% end %>
-    </nav>
+    <div class="container">
+      <header class="header">
+        <h1>The New York Robert Browning Society</h1>
+      </header>
+
+      <nav class="nav">
+        <a href="/boards">Message Boards</a>
+        <% if logged_in? && current_user %>
+          <a href="/users/<%= current_user.id %>">Your Account</a>
+          <a href="/logout">Log Out</a>
+        <% else %>
+          <a href="/login">Sign Up/Log in</a>
+        <% end %>
+      </nav>
+    </div>
+
     <%= yield %>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
