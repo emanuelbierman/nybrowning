@@ -1,7 +1,9 @@
 <% if @message != nil %>
   <p><%= @message %></p>
 <% end %>
-<h2>Message Boards</h2>
-<% @boards.each do |board| %>
-  <a href="/boards/<%= board.id %>"><img alt="<%= board.topic %>"></a>
-<% end %>
+<div class="container">
+  <h2>Message Boards</h2>
+  <% @boards.each do |board| %>
+    <a class="btn btn-outline-secondary" href="/boards/<%= board.id %>"><%= board.topic %></a>
+  <% end %>
+</div>
