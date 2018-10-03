@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) {|browning_test| "https://github.com/emanuelbierman/#{browning_test}" }
 
 gem 'sinatra'
 gem 'activerecord', '<=5.1', :require => 'active_record'
@@ -15,6 +15,7 @@ gem 'rack_session_access'
 gem 'rack-test'
 gem 'shotgun'
 gem 'pry'
+gem 'bootstrap', '~> 4.1.3'
 
 group :development do
   gem 'sqlite3'
