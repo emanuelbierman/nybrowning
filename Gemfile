@@ -15,7 +15,7 @@ gem 'rack_session_access'
 gem 'rack-test'
 gem 'shotgun'
 gem 'pry'
-gem 'bootstrap', '~> 4.1.3'
+# gem 'bootstrap', '~> 4.1.3'
 
 group :development do
   gem 'sqlite3'
