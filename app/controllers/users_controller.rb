@@ -15,13 +15,15 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    if params[:user][:username].blank? || params[:user][:email].blank? || params[:user][:password].blank?
+    if !params[:user][:username].blank? || !params[:user][:email].blank? || !params[:user][:password].blank?
       user = User.where(username: params[:user][:username]).first_or_create do |user|
         user.email = params[:user][:email]
         user.password = params[:user][:password]
       end
       session[:user_id] = user.id
-      erb :'boards/show'
+      @message = "Welcome, #{user.username}!"
+      @boards = Board.all
+      erb :'boards/index'
     else
       @message = "Please input a username, email and password. All fields are required."
       erb :'users/login_signup'
@@ -33,7 +35,9 @@ class UsersController < ApplicationController
       user = User.find_by(:username => params[:user][:username])
       if user && user.authenticate(params[:user][:password])
         session[:user_id] = user.id
-        redirect to '/boards'
+        @message = "Welcome, #{user.username}!"
+        @boards = Board.all
+        erb :'boards/index'
       else
         @message = "Please try again."
         erb :'users/login_signup'
