@@ -1,7 +1,9 @@
-<% if @message != nil %>
-  <p><%= @message %></p>
-<% end %>
-<div class="container lead">
-  <p>This is the landing page. It will have information about the NY Robert Browning Society: info about the society and about Browning himself.</p>
-  <p>In this paragraph, I just want to see what it will look like with more information on the page. It will also let me test the breakpoints of the layout.</p>
+<div class="container">
+  <% if @message != nil %>
+    <p class="p-3 mb-2 bg-secondary text-white"><%= @message %></p>
+  <% end %>
+  <div class="lead">
+    <p>This is the landing page. It will have information about the NY Robert Browning Society: info about the society and about Browning himself.</p>
+    <p>In this paragraph, I just want to see what it will look like with more information on the page. It will also let me test the breakpoints of the layout.</p>
+  </div>
 </div>

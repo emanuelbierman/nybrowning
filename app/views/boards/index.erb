@@ -1,9 +1,11 @@
-<% if @message != nil %>
-  <p><%= @message %></p>
-<% end %>
 <div class="container">
-  <h2>Message Boards</h2>
-  <% @boards.each do |board| %>
-    <a class="btn btn-outline-secondary" href="/boards/<%= board.id %>"><%= board.topic %></a>
+  <% if @message != nil %>
+    <p class="p-3 mb-2 bg-secondary text-white"><%= @message %></p>
   <% end %>
+  <div class="container">
+    <h2>Message Boards</h2>
+    <% @boards.each do |board| %>
+      <a class="btn btn-outline-secondary" href="/boards/<%= board.id %>"><%= board.topic %></a>
+    <% end %>
+  </div>
 </div>

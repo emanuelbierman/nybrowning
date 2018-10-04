@@ -1,32 +1,34 @@
 <!-- This is the user display page -->
-<% if @message != nil %>
-  <p><%= @message %></p>
-<% end %>
-<h3>Welcome, <%= @user.username %></h3>
-<form method="post" action="/users/<%= @user.id %>">
-  <input type="text" name="user[username]" placeholder="<%= @user.username %>">
-  <input type="text" name="user[email]" placeholder="<%= @user.email %>">
-  <input type="hidden" name="_method" value="patch">
-  <input type="submit" value="Update Your Account">
-</form>
-
-<section>
-  <h3>Your posts:</h3>
-  <% if @user.posts.empty? %>
-    <p>It looks like you haven't posted any content yet.</p>
-  <% else %>
-    <% @user.posts.each do |post| %>
-      <%= post.content %><br>
-      by: <%= post.user.username %> at: <%= post.created_at %>
-      <form method="post" action="/posts/<%= post.id %>">
-        <input type="text" name="post[content]" placeholder="<%= post.content %>">
-        <input type="hidden" name="_method" value="patch">
-        <input type="submit" value="Edit">
-      </form>
-      <form method="post" action="/posts/<%= post.id %>">
-        <input type="hidden" name="_method" value="delete">
-        <input type="submit" value="Delete">
-      </form>
-    <% end %>
+<div class="container">
+  <% if @message != nil %>
+    <p class="p-3 mb-2 bg-secondary text-white"><%= @message %></p>
   <% end %>
-</section>
+  <h3>Welcome, <%= @user.username %></h3>
+  <form method="post" action="/users/<%= @user.id %>">
+    <input type="text" name="user[username]" placeholder="<%= @user.username %>">
+    <input type="text" name="user[email]" placeholder="<%= @user.email %>">
+    <input type="hidden" name="_method" value="patch">
+    <input type="submit" value="Update Your Account">
+  </form>
+
+  <section>
+    <h3>Your posts:</h3>
+    <% if @user.posts.empty? %>
+      <p>It looks like you haven't posted any content yet.</p>
+    <% else %>
+      <% @user.posts.each do |post| %>
+        <%= post.content %><br>
+        by: <%= post.user.username %> at: <%= post.created_at %>
+        <form method="post" action="/posts/<%= post.id %>">
+          <input type="text" name="post[content]" placeholder="<%= post.content %>">
+          <input type="hidden" name="_method" value="patch">
+          <input type="submit" value="Edit">
+        </form>
+        <form method="post" action="/posts/<%= post.id %>">
+          <input type="hidden" name="_method" value="delete">
+          <input type="submit" value="Delete">
+        </form>
+      <% end %>
+    <% end %>
+  </section>
+</div>

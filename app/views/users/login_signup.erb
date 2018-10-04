@@ -1,16 +1,21 @@
-<% if @message != nil %>
-  <p><%= @message %></p>
-<% end %>
-<form method="post" action="/signup">
-  <label>If you don't have an account:</label>
-  <input type="text" name="user[username]" placeholder="Username">
-  <input type="text" name="user[email]" placeholder="Email">
-  <input type="text" name="user[password]" placeholder="Password">
-  <input type="submit" value="Sign Up">
-</form>
-<form method="post" action="/login">
-  <label>If you already have an account:</label>
-  <input type="text" name="user[username]" placeholder="Username">
-  <input type="text" name="user[password]" placeholder="Password">
-  <input type="submit" value="Log In">
-</form>
+<div class="container">
+  <% if @message != nil %>
+    <p class="p-3 mb-2 bg-secondary text-white"><%= @message %></p>
+  <% end %>
+  <form method="post" action="/signup">
+    <label>If you don't have an account:</label>
+    <br>
+    <input type="text" name="user[username]" placeholder="Username">
+    <input type="text" name="user[email]" placeholder="Email">
+    <input type="text" name="user[password]" placeholder="Password">
+    <input type="submit" value="Sign Up">
+  </form>
+  <br>
+  <form method="post" action="/login">
+    <label>If you already have an account:</label>
+    <br>
+    <input type="text" name="user[username]" placeholder="Username">
+    <input type="text" name="user[password]" placeholder="Password">
+    <input type="submit" value="Log In">
+  </form>
+</div>
