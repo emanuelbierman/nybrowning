@@ -14,7 +14,7 @@
   <section>
     <h1><%= @board.topic %></h1>
     <% @board.posts.each do |post| %>
-      <%= post.content %><br>
+      <p class="lead"><%= post.content %></p>
       by: <%= post.user.username %> at: <%= post.created_at %>
       <% if logged_in? && post.user == current_user %>
       <form method="post" action="/posts/<%= post.id %>">

@@ -17,7 +17,7 @@
       <p>It looks like you haven't posted any content yet.</p>
     <% else %>
       <% @user.posts.each do |post| %>
-        <%= post.content %><br>
+        <p class="lead"><%= post.content %></p>
         by: <%= post.user.username %> at: <%= post.created_at %>
         <form method="post" action="/posts/<%= post.id %>">
           <input type="text" name="post[content]" placeholder="<%= post.content %>">
@@ -27,7 +27,7 @@
         <form method="post" action="/posts/<%= post.id %>">
           <input type="hidden" name="_method" value="delete">
           <input type="submit" value="Delete">
-        </form>
+        </form><br>
       <% end %>
     <% end %>
   </section>
