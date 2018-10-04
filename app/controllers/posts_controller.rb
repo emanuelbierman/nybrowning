@@ -10,13 +10,17 @@ class PostsController < ApplicationController
     @user.posts << @post
     @post.board = @board
     @board.posts << @post
-    @message = "Your post has been posted!"
+    @message = "Your post has been posted."
     erb :'boards/show'
   end
 
   patch '/posts/:id' do
     @post = Post.find_by(id: params[:id])
     @post.update(content: params[:post][:content]) unless params[:post][:content].blank?
+    @user = @post.user
+    # @message = "Your post has been updated."
+    # params[:message] = "Your post has been updated."
+    # erb :"users/#{@user.id}"
     redirect to "/users/#{@post.user.id}"
   end
 
