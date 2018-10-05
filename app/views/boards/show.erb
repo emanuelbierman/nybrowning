@@ -5,7 +5,7 @@
   <% end %>
   <% if logged_in? %>
     <form method="post" action="/posts">
-      <input type="text" name="post[content]" placeholder="Post content here">
+      <textarea name="post[content]" placeholder="Post content here"></textarea>
       <input type="hidden" name="board[id]" value="<%= @board.id %>">
       <input type="submit" value="Submit">
     </form>
