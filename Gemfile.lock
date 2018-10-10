@@ -113,7 +113,7 @@ DEPENDENCIES
   shotgun
   sinatra
   sinatra-activerecord
-  sinatra-flash
+  sinatra-flash (~> 0.3.0)
   sqlite3
   tux
 

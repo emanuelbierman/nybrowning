@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if logged_in?
       redirect "/boards"
     else
-      redirect "/login"
+      erb :'users/login_signup'
     end
   end
 
@@ -47,8 +47,8 @@ class UsersController < ApplicationController
         flash[:message] = "Welcome, #{user.username}!"
         redirect "/boards"
       else
-        flash[:message] = "Please try again."
-        erb :'users/login_signup'
+        flash[:message] = "Please enter your password again."
+        redirect "/login"
       end
     else
       flash[:message] = "Please input a username, email and password. All fields are required."
