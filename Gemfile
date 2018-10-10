@@ -15,6 +15,7 @@ gem 'rack_session_access'
 gem 'rack-test'
 gem 'shotgun'
 gem 'pry'
+gem 'sinatra-flash'
 # gem 'bootstrap', '~> 4.1.3'
 
 group :development do

@@ -1,7 +1,7 @@
 <!-- This is the main display page after the landing page. -->
 <div class="container">
-  <% if @message != nil %>
-    <p class="p-3 mb-2 bg-secondary text-white"><%= @message %></p>
+  <% if flash[:message] != nil %>
+    <p class="p-3 mb-2 bg-secondary text-white"><%= flash[:message] %></p>
   <% end %>
   <% if logged_in? %>
     <form method="post" action="/posts">

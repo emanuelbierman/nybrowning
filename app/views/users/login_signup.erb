@@ -1,6 +1,6 @@
 <div class="container">
-  <% if @message != nil %>
-    <p class="p-3 mb-2 bg-secondary text-white"><%= @message %></p>
+  <% if flash[:message] != nil %>
+    <p class="p-3 mb-2 bg-secondary text-white"><%= flash[:message] %></p>
   <% end %>
   <form method="post" action="/signup">
     <label>If you don't have an account:</label>

@@ -1,6 +1,6 @@
 <div class="container">
-  <% if @message != nil %>
-    <p class="p-3 mb-2 bg-secondary text-white"><%= @message %></p>
+  <% if flash[:message] != nil %>
+    <p class="p-3 mb-2 bg-secondary text-white"><%= flash[:message] %></p>
   <% end %>
   <div class="container">
     <h2>Message Boards</h2>
