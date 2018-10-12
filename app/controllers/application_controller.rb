@@ -19,6 +19,11 @@ class ApplicationController < Sinatra::Base
     erb :contact
   end
 
+  get '/meetings' do
+    # @events = Event.all
+    erb :meetings
+  end
+
   helpers do
     def logged_in?
       !!session[:user_id]
