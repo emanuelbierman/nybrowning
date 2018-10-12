@@ -5,10 +5,10 @@
   <% end %>
   <h3>Welcome, <%= @user.username %></h3>
   <form method="post" action="/users/<%= @user.id %>">
-    <input type="text" name="user[username]" placeholder="<%= @user.username %>">
+    <input type="text" name="user[username]" placeholder="<%= @user.username %>" disabled>
     <input type="email" name="user[email]" placeholder="<%= @user.email %>">
     <input type="hidden" name="_method" value="patch">
-    <input type="submit" value="Update Your Account">
+    <input type="submit" value="Update Your Email">
   </form>
   <br>
 

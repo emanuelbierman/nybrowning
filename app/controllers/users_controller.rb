@@ -58,7 +58,7 @@ class UsersController < ApplicationController
 
   get '/users/:id' do
     @user = User.find_by(id: params[:id])
-    if logged_in? && current_user.id == @user.id
+    if logged_in? && current_user == @user
       erb :'users/show'
     elsif logged_in?
       flash[:message] = "Sorry, you can only view your own account."
@@ -70,11 +70,15 @@ class UsersController < ApplicationController
   end
 
   patch '/users/:id' do
-    # include validation here
     @user = User.find_by(id: params[:id])
-    @user.update(username: params[:user][:username]) unless params[:user][:username].blank?
-    @user.update(email: params[:user][:email]) unless params[:user][:email].blank?
-    redirect to "/users/#{@user.id}"
+    if logged_in? && current_user == @user && !params[:user][:email].blank?
+      @user.update(email: params[:user][:email])
+      flash[:message] = "Your email has been updated."
+      redirect to "/users/#{@user.id}"
+    else
+      flash[:message] = "Please log in to access your account."
+      redirect to "/users/#{@user.id}"
+    end
   end
 
 end
