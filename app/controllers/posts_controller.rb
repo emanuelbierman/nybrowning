@@ -2,6 +2,12 @@
 
 class PostsController < ApplicationController
 
+  get '/posts' do
+    @posts = Post.all
+    # can I filter posts by created_at?
+    erb :'posts/index'
+  end
+
   post '/posts' do
     @board = Board.find_by(id: params[:board][:id])
     if logged_in?
