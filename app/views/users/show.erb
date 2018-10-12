@@ -5,10 +5,14 @@
   <% end %>
   <h3>Welcome, <%= @user.username %></h3>
   <form method="post" action="/users/<%= @user.id %>">
-    <input type="text" name="user[username]" placeholder="<%= @user.username %>" disabled>
-    <input type="email" name="user[email]" placeholder="<%= @user.email %>">
+    <!-- <input type="text" name="user[username]" placeholder="<%= @user.username %>" disabled> -->
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="user[email]" placeholder="<%= @user.email %>" class="form-control" aria-describedby="passwordHelpBlock">
+    <p id="passwordHelpBlock" class="form-text text-muted">
+      Change where you receive our occasional emails, such as our monthly newsletters.
+    </p>
     <input type="hidden" name="_method" value="patch">
-    <input type="submit" value="Update Your Email">
+    <input type="submit" value="Update Email">
   </form>
   <br>
 
