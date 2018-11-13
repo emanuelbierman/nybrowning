@@ -8,4 +8,5 @@ use Rack::MethodOverride
 use UsersController
 use PostsController
 use BoardsController
+use EmailsController
 run ApplicationController

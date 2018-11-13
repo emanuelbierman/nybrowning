@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180925163012) do
+ActiveRecord::Schema.define(version: 20181113183935) do
 
   create_table "boards", force: :cascade do |t|
     t.string "topic"
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.string "email"
   end
 
   create_table "posts", force: :cascade do |t|

@@ -7,45 +7,114 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel=”stylesheet” type=”text/css” href=”/css/style.css”>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/brands.css" integrity="sha384-QT2Z8ljl3UupqMtQNmPyhSPO/d5qbrzWmFxJqmY7tqoTuT2YrQLEqzvVOP2cT5XW" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css" integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
   </head>
   <body>
     <div class="container">
-      <h1 class="display-4">The New York Robert Browning Society</h1>
-
+      <div class="row background" id="green-background">
+        <div class="col-3 col-md-2">
+          <img class="img-fluid" src="images/rb1.jpg" alt="Robert Browning">
+        </div>
+        <div class="col-12 col-md-8">
+          <h2 class="display-3 text-center">The New York Browning Society</h2>
+        </div>
+        <div class="col-3 col-md-2">
+          <img class="img-fluid" src="images/eb1.jpg" alt="Elizabeth Barrett Browning">
+        </div>
+      </div>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="/">About</a>
+        <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="/meetings">Meetings</a>
-            <a class="nav-item nav-link" href="/boards">Message Board</a>
+            <%# <a class="nav-item nav-link" href="/login">Register</a> %>
             <a class="nav-item nav-link" href="/contact">Contact</a>
-            <% if logged_in? && current_user %>
-            <a class="nav-item nav-link" href="/users/<%= current_user.id %>">Your Account</a>
-            <a class="nav-item nav-link" href="/logout">Log Out</a>
-            <% else %>
-            <a class="nav-item nav-link" href="/login">Register</a>
-            <% end %>
+            <%# <a class="nav-item nav-link" href="/boards">Forum</a> %>
+            <a class="nav-item nav-link" href="#">HS Poetry Competition</a>
+            <a class="nav-item nav-link" href="#"><i class="fab fa-facebook"></i></a>
+            <a class="nav-item nav-link" href="#"><i class="fab fa-twitter"></i></a>
+            <a class="nav-item nav-link" href="#"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
       </nav>
     </div>
-    <br>
     <main class="container">
       <div class="row">
         <div class="col-8 blog-main">
           <%= yield %>
         </div>
         <aside class="col-4 blog-sidebar">
-          <h4 class="font-italic">About</h4>
+          <% if flash[:message] != nil %>
+            <p class="p-3 mb-2 bg-secondary text-white"><%= flash[:message] %></p>
+          <% end %>
+          <form method="post" action="/email">
+            <label>Sign up to receive our monthly newsletter:</label>
+            <input type="email" name="email[email]" placeholder="Email">
+            <input type="submit" value="Sign Up">
+            <small id="emailHelpBlock" class="form-text text-muted">
+              We will not spam your account or share your information with third parties.
+            </small>
+          </form>
+          <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" style="width:100%; height:500px !important;">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="img-fluid d-block w-100" src="images/rb2.jpg" alt="Robert Browning">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>photograph by Julia Margaret Cameron, 1865</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid d-block w-100" src="images/rb3.jpg" alt="Robert Browning">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>painting by Michele Gordigiani, 1858</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid d-block w-100" src="images/eb2.jpg" alt="Elizabeth Barrett Browning">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>painting by Michele Gordigiani, 1858</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid d-block w-100" src="images/rb4.jpg" alt="Robert Browning">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>painting by George Frederic Watts, c. 1893</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid d-block w-100" src="images/rb5.jpg" alt="Robert Browning">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>painting by Robert Wiedeman Barrett (Pen) Browning, 1882</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid d-block w-100" src="images/rb6.jpg" alt="Robert Browning">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>painting by Rudolf Lehmann, c. 1890</p>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <img class="img-fluid d-block w-100" src="images/rb7.jpg" alt="Robert Browning">
+                <div class="carousel-caption d-none d-md-block">
+                  <p>photograph by Elliott & Fry, c. 1880</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="font-italic">Board</h5>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">James Browning Kepple, President</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item">Robert Kramer, Vice President</li>
+            <li class="list-group-item">Tandy Cronyn, Treasurer</li>
+            <li class="list-group-item">Laura Clarke, Corresponding Secretary</li>
+            <li class="list-group-item">Nancy McCall, Recording Secretary</li>
+            <li class="list-group-item">Gene Bierhorst, Director-at-Large</li>
+            <li class="list-group-item">KT Sullivan, Director-at-Large</li>
+            <li class="list-group-item">Stephen Downey, Director-at-Large</li>
           </ul>
         </aside>
       </div>

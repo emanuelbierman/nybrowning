@@ -1,0 +1,19 @@
+<IfModule mod_php4.c>
+    php_value session.use_trans_sid 0
+</IfModule>
+<IfModule mod_security.c>
+SecFilterEngine Off
+SecFilterScanPOST Off
+</IfModule>
+RewriteEngine On
+#RewriteBase /sNews16
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.*) $1 [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?category=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z_]+)/([^/]+) index.php?category=$1&title=$2 [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z_]+)/([^/]+)/([^/]+)/ index.php?category=$1&title=$2&commentspage=$3 [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-z0-9_-]+)/([0-9]+)/ index.php?category=$1&nbsp;articlespage=$2 [L]
