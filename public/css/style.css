@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 
-/* row.background#green-background {
+/* row.background {
   background-color: rgb(121, 166, 102);
 } */
+
+p {
+  font-family: "Helvetica Neue", serif !important;
+}
+
+h4 {
+  font-family: "Helvetica Neue", serif !important;
+}
+
+h2 {
+  font-family: "Libre Baskerville", serif !important;
+}
